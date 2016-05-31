@@ -1,4 +1,4 @@
-package com.example.dominik.liveticker;
+package fh_muenster.de.liveticker;
 
 import org.junit.Test;
 
