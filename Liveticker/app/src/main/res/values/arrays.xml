@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="event_spinner">
+        <item>Gelbe Karte</item>
+        <item>Rote Karte</item>
+        <item>Freistoss</item>
+        <item>Tor</item>
+        <item>Auswechslung</item>
+        <item>Chance</item>
+
+    </array>
+
+
+</resources>
