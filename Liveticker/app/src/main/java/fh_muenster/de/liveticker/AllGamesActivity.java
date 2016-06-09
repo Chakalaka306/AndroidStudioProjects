@@ -3,11 +3,11 @@ package fh_muenster.de.liveticker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class FavoritenActivity extends AppCompatActivity {
+public class AllGamesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favoriten);
+        setContentView(R.layout.activity_all_games);
     }
 }

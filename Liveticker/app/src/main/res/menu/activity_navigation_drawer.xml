@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_start"
-            android:icon="@drawable/ball"
-            android:title="Startseite" />
-        <item
             android:id="@+id/nav_alle_spiele"
             android:icon="@drawable/tree"
             android:title="Alle Spiele" />

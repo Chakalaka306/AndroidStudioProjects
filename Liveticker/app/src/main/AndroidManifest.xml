@@ -20,7 +20,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RegistryActivity"
             android:label="@string/title_activity_registry" />
@@ -31,20 +37,16 @@
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".MannschaftActivity" />
-        <activity android:name=".FavoritenActivity"></activity>
-=======
         <activity android:name=".DonationActivity" />
         <activity android:name=".ImprintActivity" />
-        <activity android:name=".FavoritActivity"></activity>
->>>>>>> origin/master
+        <activity android:name=".FavoritActivity" />
+        <activity android:name=".TeamActivity" />
+        <activity android:name=".AllGamesActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package fh_muenster.de.liveticker;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -75,18 +76,21 @@ public class NavigationActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_start) {
-            // Handle the camera action
-        } else if (id == R.id.nav_alle_spiele) {
-
+       if (id == R.id.nav_alle_spiele) {
+            Intent i = new Intent(NavigationActivity.this,AllGamesActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_alle_mannschaften) {
-
+            Intent i = new Intent(NavigationActivity.this,TeamActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_favoriten) {
-
+            Intent i = new Intent(NavigationActivity.this,FavoritActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_impressum) {
-
+            Intent i = new Intent(NavigationActivity.this,ImprintActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_donate) {
-
+            Intent i = new Intent(NavigationActivity.this,DonationActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
