@@ -1,6 +1,8 @@
 package fh_muenster.de.liveticker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +29,20 @@ public class NavigationActivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /* Datenbankspeicher in der App ?!
+        SharedPreferences shared = getSharedPreferences("TEST", Context.MODE_PRIVATE);
+        shared.getString("User","");*/
+
+        Intent user_infos = getIntent();
+        String user_name = user_infos.getStringExtra("User");
+
+        if(user_name!=null && !user_name.equals(""))
+        {
+            TextView txt = (TextView)findViewById(R.id.wilkommens_seite);
+            txt.setText("Willkommen bei der Liveticker app, "+user_name+". Das Menü finden Sie auf der oberen linken Seite. Happy Ticking!");
+        }
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,6 +81,8 @@ public class NavigationActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent myIntent = new Intent(NavigationActivity.this,AllGamesActivity.class);
+            startActivity(myIntent);
             return true;
         }
 

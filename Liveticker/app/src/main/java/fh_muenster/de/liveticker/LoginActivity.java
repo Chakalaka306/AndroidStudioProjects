@@ -15,6 +15,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import fh_muenster.de.liveticker.async.async_task_master;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -78,40 +80,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button btn = (Button) findViewById(R.id.btnLogin);
-        Button btn_reg = (Button) findViewById(R.id.btnRegister);
 
-
-        /* Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById(R.id.TVpassword);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.btnLogin || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-        */
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+
     }
 
     public void onButtonClick(View v) {
@@ -121,20 +95,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             String str_uname = uname.getText().toString();
             String str_pw = pw.getText().toString();
-            TextView tv = (TextView)findViewById(R.id.tvError);
-            //hier kommet die db verbindung hin wo das pw und der username von der db in eine string variable gesetzt wird
 
-            String uname_db = "andi";
-            String pw_db = "asd";
-            String str_db_uname = uname_db.toString();
-            String str_db_pw = pw_db.toString();
+            String[] params = new String[]{str_uname,str_pw};
 
-            if(str_pw == str_db_pw){
-                Intent i = new Intent(LoginActivity.this,NavigationActivity.class);
-                startActivity(i);
-            }else{
-                tv.setText("Error Login Failed. Check your Username and Password.");
-            }
+            async_task_master async_inst = new async_task_master();
+            async_inst.init(LoginActivity.this);
+            async_inst.execute(params);
         }
         if (v.getId() == R.id.btnRegister) {
            Intent i = new Intent(LoginActivity.this,RegistryActivity.class);

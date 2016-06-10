@@ -38,11 +38,16 @@
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".DonationActivity" />
+        <activity android:name=".DonationActivity"
+            android:label="@string/donation"/>
         <activity android:name=".ImprintActivity" />
-        <activity android:name=".FavoritActivity" />
-        <activity android:name=".TeamActivity" />
-        <activity android:name=".AllGamesActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+        <activity android:name=".FavoritActivity"
+            android:label="@string/favorite" />
+        <activity android:name=".TeamActivity"
+            android:label="@string/all_teams"/>
+        <activity android:name=".AllGamesActivity"
+            android:label="@string/all_games"/>
+        <activity android:name=".SingleGameActivity"/><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"

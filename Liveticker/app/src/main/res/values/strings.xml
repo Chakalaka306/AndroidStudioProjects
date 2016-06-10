@@ -6,6 +6,10 @@
     <string name="event_erfassung">Hier können Sie ihr Event eintragen. </string>
     <string name="event_summary">Bitte hier die Zusammenfassung des Events eintragen.</string>
     <string name="send_event">Abschicken</string>
+    <string name="favorite">Favorit</string>
+    <string name="all_teams">Alle Mannschaften</string>
+    <string name="all_games">Alle Spiele</string>
+    <string name="donation">Spenden</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
