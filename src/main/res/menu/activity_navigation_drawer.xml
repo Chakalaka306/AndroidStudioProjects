@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_alle_spiele"
+            android:icon="@drawable/tree"
+            android:title="Alle Spiele" />
+        #icon Credit goes to "Freepik" on "Flaticon"
+
+        <item
+            android:id="@+id/nav_alle_mannschaften"
+            android:icon="@drawable/player"
+            android:title="Alle Mannschaften" />
+        #icon Credit goes to "Freepik" on "Flaticon"
+
+        <item
+            android:id="@+id/nav_favoriten"
+            android:icon="@drawable/cup"
+            android:title="Favoriten" />
+        #icon Credit goes to "Freepik" on "Flaticon"
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_impressum"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="Impressum" />
+            #icon Credit goes to "Freepik" on "Flaticon"
+            <item
+                android:id="@+id/nav_donate"
+                android:icon="@drawable/donation"
+                android:title="Spende" />
+            #icon Credit goes to "Freepik" on "Flaticon"
+        </menu>
+    </item>
+
+</menu>
