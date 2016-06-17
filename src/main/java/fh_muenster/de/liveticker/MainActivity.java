@@ -1,6 +1,7 @@
 package fh_muenster.de.liveticker;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,8 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+TextView txtheadline;
+Typeface schriftart_opensans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        txtheadline = (TextView)  findViewById(R.id.txtheadline);
+        schriftart_opensans=Typeface.createFromAsset(getAssets(), "schriftarten/opensans.ttf");
+        txtheadline.setTypeface(schriftart_opensans);
         Spinner s1 = (Spinner)findViewById(R.id.event_spinner);
         ArrayAdapter<CharSequence> adapter =
                 ArrayAdapter.createFromResource(

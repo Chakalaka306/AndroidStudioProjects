@@ -11,6 +11,8 @@
     <string name="all_games">Alle Spiele</string>
     <string name="donation">Spende</string>
 
+    <string name="txtheadline">Willkommen auf der Liveticker Seite</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

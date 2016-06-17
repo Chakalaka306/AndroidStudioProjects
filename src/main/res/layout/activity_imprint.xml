@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/rasen"
     tools:context="fh_muenster.de.liveticker.ImprintActivity">
 
     <TextView
@@ -15,7 +16,8 @@
         android:text="Andreas Blass, Kevin Gorter , Dominik Teipel, Tom Drewitz "
         android:id="@+id/textView8"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="89dp" />
+        android:layout_marginTop="89dp"
+        android:textColor="@color/abc_background_cache_hint_selector_material_dark" />
 
     <TextView
         android:layout_width="wrap_content"
