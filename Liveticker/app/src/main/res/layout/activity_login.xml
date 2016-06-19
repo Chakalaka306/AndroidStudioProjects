@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bild"
     tools:context="fh_muenster.de.liveticker.LoginActivity"
     android:weightSum="1"
     android:orientation="vertical">
@@ -16,12 +17,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Willkommen auf der Liveticker Seite"
-        android:id="@+id/textView"
+        android:text="@string/txtheadline"
+        android:id="@+id/txtheadline"
         android:layout_marginTop="56dp"
-        android:height="25dp"
-        android:width="250dp"
-        android:textSize="15dp"
+        android:height="22dp"
+        android:width="350dp"
+        android:textSize="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -80,10 +81,10 @@
         android:text="Benutzername:"
         android:height="25dp"
         android:width="250dp"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:id="@+id/textView2"
         android:layout_marginTop="33dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/txtheadline"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -92,7 +93,7 @@
         android:text="Passwort:"
         android:height="25dp"
         android:width="250dp"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:id="@+id/textView3"
         android:layout_below="@+id/TVusername"
         android:layout_alignStart="@+id/TVusername" />

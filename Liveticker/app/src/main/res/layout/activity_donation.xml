@@ -9,12 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fh_muenster.de.liveticker.DonationActivity">
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:text="Hier haben Sie die Möglichkeit eine kleine Spende zu hinterlassen" />
+        android:text="Hier können Sie eine Spende hinterlassen"
+        android:id="@+id/textView20"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hat Ihnen die App gefallen?"
+        android:id="@+id/textView21"
+        android:layout_below="@+id/textView20"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="64dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dann hinterlassen Sie uns doch eine kleine Spende :)"
+        android:id="@+id/textView22"
+        android:layout_below="@+id/textView21"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="77dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wir , das Entwicklungsteam bedankt sich für ihre Spende !"
+        android:id="@+id/textView23"
+        android:layout_marginBottom="83dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weiter zur Überweisung"
+        android:id="@+id/button"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/textView20" />
+
 </RelativeLayout>
