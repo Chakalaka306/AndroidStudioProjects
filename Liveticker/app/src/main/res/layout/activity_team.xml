@@ -6,7 +6,56 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/rasen"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fh_muenster.de.liveticker.TeamActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hier können Sie sich einen Überblick über Ligen und Mannschaften schaffen "
+        android:id="@+id/textView4"
+        android:textSize="25dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/uebersicht_ligen"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/common_action_bar_splitter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mannschaften:"
+        android:id="@+id/textView24"
+        android:textSize="25dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_light"
+        android:layout_below="@+id/uebersicht_ligen"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="82dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/uebersicht_teams"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/textView24"
+        android:layout_alignParentStart="true"
+        android:background="@color/common_action_bar_splitter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ligen:"
+        android:id="@+id/textView6"
+        android:textSize="25dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_light"
+        android:layout_above="@+id/uebersicht_ligen"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

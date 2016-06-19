@@ -103,8 +103,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             async_inst.execute(params);
         }
         if (v.getId() == R.id.btnRegister) {
-           Intent i = new Intent(LoginActivity.this,RegistryActivity.class);
-           startActivity(i);
+            Intent i = new Intent(LoginActivity.this,RegistryActivity.class);
+            startActivity(i);
         }
         if(v.getId() == R.id.btnGuest){
             Intent i = new Intent(LoginActivity.this,NavigationActivity.class);

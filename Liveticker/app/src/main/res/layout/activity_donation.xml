@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/rasen"
     tools:context="fh_muenster.de.liveticker.DonationActivity">
 
     <TextView
@@ -14,7 +15,9 @@
         android:layout_height="wrap_content"
         android:text="Hier können Sie eine Spende hinterlassen"
         android:id="@+id/textView20"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="25dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,7 +26,9 @@
         android:id="@+id/textView21"
         android:layout_below="@+id/textView20"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="64dp" />
+        android:layout_marginTop="64dp"
+        android:textSize="25dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,16 +37,20 @@
         android:id="@+id/textView22"
         android:layout_below="@+id/textView21"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="77dp" />
+        android:layout_marginTop="77dp"
+        android:textSize="25dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wir , das Entwicklungsteam bedankt sich für ihre Spende !"
         android:id="@+id/textView23"
+        android:textSize="25dp"
         android:layout_marginBottom="83dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
     <Button
         android:layout_width="wrap_content"

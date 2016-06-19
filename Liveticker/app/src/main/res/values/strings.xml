@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Liveticker</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Einstellungen</string>
     <string name="event_spinner">Event</string>
     <string name="title_activity_login">Liveticker</string>
     <string name="event_erfassung">Hier können Sie ihr Event eintragen. </string>
@@ -10,23 +10,28 @@
     <string name="all_teams">Alle Mannschaften</string>
     <string name="all_games">Alle Spiele</string>
     <string name="donation">Spende</string>
+    <string name="imprint">Impressum</string>
+    <string name="liga_spinner">Ligaa</string>
+    <string name="Mannschaften_spinner">Mannschaft</string>
+    <string name="uebersicht_teams">Mannschaften</string>
+    <string name="uebersicht_ligen">Ligen</string>
 
     <string name="txtheadline">Willkommen auf der Liveticker Seite</string>
 
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="action_sign_in">Registrieren</string>
+    <string name="action_sign_in_short">Einloggen</string>
+    <string name="error_invalid_email">Diese E-Mail Adresse ist ungültig</string>
+    <string name="error_invalid_password">Das Passwort ist zu kurz</string>
+    <string name="error_incorrect_password">Das Passwort ist falsch</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_registration">Register</string>
+    <string name="title_activity_registration">Registrierung</string>
     <string name="title_activity_registry">Registrieren</string>
     <string name="title_activity_settings">Settings</string>
 

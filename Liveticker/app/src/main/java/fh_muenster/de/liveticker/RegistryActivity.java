@@ -90,7 +90,7 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
+
         mProgressView = findViewById(R.id.login_progress);
     }
 

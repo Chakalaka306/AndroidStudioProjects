@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fh_muenster.de.liveticker">
 
+    <uses-sdk android:maxSdkVersion="21"
+        android:targetSdkVersion="21"
+        android:minSdkVersion="21"/>
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -40,7 +43,8 @@
         </activity>
         <activity android:name=".DonationActivity"
             android:label="@string/donation"/>
-        <activity android:name=".ImprintActivity" />
+        <activity android:name=".ImprintActivity"
+            android:label="@string/imprint"/>
         <activity android:name=".FavoritActivity"
             android:label="@string/favorite" />
         <activity android:name=".TeamActivity"

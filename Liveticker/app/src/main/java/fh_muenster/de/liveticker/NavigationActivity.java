@@ -95,7 +95,7 @@ public class NavigationActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-       if (id == R.id.nav_alle_spiele) {
+        if (id == R.id.nav_alle_spiele) {
             Intent i = new Intent(NavigationActivity.this,AllGamesActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_alle_mannschaften) {

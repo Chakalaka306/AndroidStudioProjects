@@ -10,14 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 public class MainActivity extends AppCompatActivity {
 
-TextView txtheadline;
-Typeface schriftart_opensans;
+    TextView txtheadline;
+    Typeface schriftart_opensans;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +41,12 @@ Typeface schriftart_opensans;
                 android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
 
-;
+
     }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

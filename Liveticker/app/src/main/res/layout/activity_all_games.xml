@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
-        android:background="#DDD"
+        android:background="@drawable/rasen"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -31,6 +31,7 @@
                     android:gravity="center"
                     android:text="Zum aktualisieren von oben nach unten Ziehen"
                     android:layout_width="match_parent"
+                    android:textSize="30dp"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
@@ -72,7 +73,8 @@
                         android:text="SPIEL_ZWEI"
                         android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_primary_text_material_dark" />
 
                 </LinearLayout>
 

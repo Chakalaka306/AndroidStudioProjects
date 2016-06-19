@@ -7,8 +7,24 @@
         <item>Tor</item>
         <item>Auswechslung</item>
         <item>Chance</item>
+        <item>Abpfiff</item>
 
     </array>
+    <array name="Mannschaften_spinner">
+        <item>FC Bayern München</item>
+        <item>Borussia Dortmund</item>
+        <item>Bayer 04 Leverkusen</item>
+        <item>Borussia Mönchengladbach</item>
+    </array>
+    <array name="uebersicht_ligen">
+        <item>1.Bundesliga</item>
+    </array>
 
+    <array name="uebersicht_teams">
+        <item>FC Bayern München</item>
+        <item>Borussia Dortmund</item>
+        <item>Bayer 04 Leverkusen</item>
+        <item>Borussia Mönchengladbach</item>
+    </array>
 
 </resources>
