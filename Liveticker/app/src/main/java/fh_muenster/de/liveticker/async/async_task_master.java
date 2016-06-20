@@ -16,19 +16,45 @@ import java.nio.charset.StandardCharsets;
 
 import fh_muenster.de.liveticker.NavigationActivity;
 
+
 /**
- * Created by Kevin on 10.06.2016.
+ * @author Andreas Blass , Kevin Gorter
+ * @version 1.0
+ */
+
+
+/**
+ * Erstellung eines async_task_manager
  */
 public class async_task_master extends AsyncTask<String, Void, String> {
 
+    /**
+     * The Username.
+     */
     String username = "";
+    /**
+     * The Used activity.
+     */
     Context used_activity;
 
+    /**
+     * Init.
+     *
+     * @param ctx the ctx
+     */
     public void init(Context ctx)
     {
         used_activity = ctx;
     }
 
+    /**
+     * Aktivitäten die im Hintergrund ausgeführt werden sollen
+     * in einem byte [] werden postData gesteckt und übergeben
+     * Verbindung zum Webserver wird hier angegeben
+     * Verbindung zum Server wird hier angegeben
+     * @param params
+     * @return
+     */
     @Override
     protected String doInBackground(String[] params) {
 

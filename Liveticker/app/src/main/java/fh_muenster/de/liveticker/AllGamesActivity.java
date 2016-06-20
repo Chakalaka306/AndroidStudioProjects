@@ -8,13 +8,33 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+/**
+ * The type All games activity.
+ */
 public class AllGamesActivity extends AppCompatActivity {
+
+    /**
+     * @author Andreas Blass , Kevin Gorter
+     * @version 1.0
+     */
+
+    /**
+     *
+     * @author Andreas Blass, Kevin Gorter
+     * @param savedInstanceState
+     *  Aufruf der activity_all_games
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_games);
 
+
+        /**
+        author Andreas Blass, Kevin Gorter
+        * Erstellen der Fenster um die Spiele auszuwählen
+         */
         SwipeRefreshLayout mySwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
         final LinearLayout spiel_eins = (LinearLayout)findViewById(R.id.spiel_eins);
         final LinearLayout spiel_zwei = (LinearLayout)findViewById(R.id.spiel_zwei);
@@ -41,7 +61,10 @@ public class AllGamesActivity extends AppCompatActivity {
                 }
         );
 
-
+       /**
+       @author Andreas Blass , Kevin Gorter
+       * Erstellen der Spiels "1"
+        */
         spiel_eins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +73,10 @@ public class AllGamesActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        spiel_zwei.setOnClickListener(new View.OnClickListener() {
+  /**
+       @author Andreas Blass , Kevin Gorter
+       * Erstellen der Spiels "2"
+        */        spiel_zwei.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(AllGamesActivity.this,SingleGameActivity.class);

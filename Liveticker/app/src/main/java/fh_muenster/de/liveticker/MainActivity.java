@@ -14,13 +14,38 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * @author Andreas Blass , Kevin Gorter
+     * @version 1.0
+     */
+
+
+    /**
+     * The Txtheadline.
+     *
+     * @author Andreas BlassInitialisieren der Schriftblöcke , bzw der Schriftart
+     */
     TextView txtheadline;
+    /**
+     * The Schriftart opensans.
+     */
     Typeface schriftart_opensans;
 
 
 
+
+    /**
+     *
+     * @author Andreas Blass
+     * @param savedInstanceState
+     *  Aufruf der activity_main
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +54,29 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /**
+         * @author Andreas Blass
+         * festlegen des Textes der in der Schrfitart angezeigt werden soll
+         * hier : txtheadline
+         * Schriftart: opensans
+         * Datei: "schriftart_opensans " befindet sich in dem asset
+         * unter dem Ordner Schriftarten
+         */
         txtheadline = (TextView)  findViewById(R.id.txtheadline);
         schriftart_opensans=Typeface.createFromAsset(getAssets(), "schriftarten/opensans.ttf");
         txtheadline.setTypeface(schriftart_opensans);
+
+
+        /**
+         *
+         *@author Kevin Gorter
+         * Spinner anlegen um ein Event auszuwählen
+         * Name des Spinners: s1
+         * aus dem Ordner arrays.xml werden die Arrays angezeigt
+         * Name des Arrays : event_spinner
+         * Auswählen eines Events möglich
+         */
+
         Spinner s1 = (Spinner)findViewById(R.id.event_spinner);
         ArrayAdapter<CharSequence> adapter =
                 ArrayAdapter.createFromResource(
@@ -45,24 +90,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
+    /**
+     * author Andreas Blass , Kevin Gorter
+     * @param menu
+     * Erstellung des Menüs
+     * zusätzlich werden die Items der action bar hinzugefügt sofern sie vorhanden ist
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+
+    /**
+     * Aufruf der Methode onItemSelected
+     * @param item
+     * Die action bar kann mit Klicks umgehen solange  die jeweiligen parent activitys in der
+     * AndroidManifest.xml definiert wurden
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+
+
         if (id == R.id.action_settings) {
 
             return true;

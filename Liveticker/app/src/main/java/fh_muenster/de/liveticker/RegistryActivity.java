@@ -34,19 +34,33 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
+
 /**
- * A login screen that offers login via email/password.
+ * @author Andreas Blass , Kevin Gorter
+ * @version 1.0
+ */
+
+
+/**
+ * Erzeugen einer RegistryActivity
  */
 public class RegistryActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+
     /**
-     * Id to identity READ_CONTACTS permission request.
+      ID zum identifizieren der READ_CONTACTS permission Antwort
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+
 
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
+     */
+
+
+    /**
+     * A dummy authentucation
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
@@ -56,17 +70,28 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
      */
     private UserLoginTask mAuthTask = null;
 
-    // UI references.
+    /**
+    Initialisieren der UI references
+     */
+
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
 
+    /**
+       Erstelle den Aufruf der activity_registry
+       @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registry);
-        // Set up the login form.
+
+        /**
+        Einrichten der Login form
+         */
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
@@ -94,6 +119,7 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
         mProgressView = findViewById(R.id.login_progress);
     }
 
+
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -101,7 +127,9 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
 
         getLoaderManager().initLoader(0, null, this);
     }
-
+             /**
+             Methode die Zurück gibt, ob die Version in Ordnung ist
+              */
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -125,7 +153,7 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
     }
 
     /**
-     * Callback received when a permissions request has been completed.
+    * Empfangsrückgang wenn eine Erlaubnis erteilt wurde
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -139,16 +167,18 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
 
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
+    * Versuche dich einzuloggen oder zu registrieren nach der Login form
+    * Wenn die Anmeldung fehlerhaft war dann gib Fehler zurück
+    * Beispiele: "Das Passwort ist zu kurz" oder "Diese E-Mail ist ungültig"
      */
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
 
-        // Reset errors.
+        /**
+        Zurückgeben der Fehler
+         */
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
@@ -159,14 +189,19 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
+
+        /**
+        Überprüfe ob es sich um eine gültiges Passwort handelt , dass der User eingegeben hat
+         */
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
 
-        // Check for a valid email address.
+        /**
+        Überprüfe ob es sich um eine gültige E-Mail adresse handelt
+         */
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
@@ -177,37 +212,49 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
             cancel = true;
         }
 
+        /**
+        * Es gibt einen Error , führe nicht den Login durch und gebe das 1. Feld mit einem Error aus
+         */
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+
+            /*
+            *Zeige deinen Fortschritt Spinner an und führe im Hintergrund den Login des Users aus
+             */
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
     }
 
+    /*
+    Überprüfung ob die E-Mail ein "@" enthält
+     */
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
+    /*
+    Überprüfung ob das Passwort mindestens eine Länge von 4 hat
+     */
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
     /**
-     * Shows the progress UI and hides the login form.
+    Zeigt den progress UI and versteckt die Login form
+     */
+
+    /*
+    Die Honeycomb MR2 stellt Animationen zur Verfügung , welche die Annimation erleichtert
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
@@ -228,9 +275,12 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
                     mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
+        } else
+        /**
+        Die Animationen sind nicht verfügbar und verstecken die relevanten UI Komponenten
+         */
+        {
+
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
@@ -239,20 +289,32 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
+
+                /**
+                 * Abruf von Datenzeilen für das "Profil" Kontakt des Gerätebenutzers
+                 */
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
                         ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
 
-                // Select only email addresses.
+               /**
+               * Wähle nur E-Mail adressen aus
+                */
                 ContactsContract.Contacts.Data.MIMETYPE +
                         " = ?", new String[]{ContactsContract.CommonDataKinds.Email
                 .CONTENT_ITEM_TYPE},
 
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
+                /**
+                *Zeige die Email Adressen vorzugsweuse und merke , dass es keine
+                *E-Mail adresse vorhanden sein muss
+                * Wenn die user keine Angegeben haben
+                 */
                 ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
     }
 
+    /**
+    *Erstelle ein Array für E-Mails
+    *Solange E-Mails vorhanden sind und noch nicht in die Liste eingetragen worden sind trage diese in die Liste hinein
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         List<String> emails = new ArrayList<>();
@@ -269,9 +331,11 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
-
+          /**
+          Erstelle einen ArrayAdapter der dem AutoCompleteTextView zeigt was in seiner Liste steht
+           */
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
+
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(RegistryActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
@@ -281,24 +345,38 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
 
 
     private interface ProfileQuery {
+        /**
+         * The Projection.
+         */
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
                 ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
         };
 
+        /**
+         * The constant ADDRESS.
+         */
         int ADDRESS = 0;
+        /**
+         * The constant IS_PRIMARY.
+         */
         int IS_PRIMARY = 1;
     }
 
     /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
+     * Präsentiert einen asynchronen login/registration task um den User zu authentifizieren
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
 
+        /**
+         * Instantiates a new User login task.
+         *
+         * @param email    the email
+         * @param password the password
+         */
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
@@ -309,7 +387,9 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
             // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
+                /*
+                Simuliere einen Netzwerk zugriff
+                 */
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
@@ -318,7 +398,11 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
+
+                    /**
+                    Es Existiert ein Account , gebe ein True zurück wenn das Passwort korrekt ist
+                     */
+
                     return pieces[1].equals(mPassword);
                 }
             }
@@ -327,6 +411,11 @@ public class RegistryActivity extends AppCompatActivity implements LoaderCallbac
             return true;
         }
 
+
+        /**
+         * Überprüfung ob das Passwort akzeptabel ist
+         * @param success
+         */
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;

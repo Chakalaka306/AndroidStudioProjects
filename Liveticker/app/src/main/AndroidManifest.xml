@@ -2,14 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fh_muenster.de.liveticker">
 
-    <uses-sdk android:maxSdkVersion="21"
-        android:targetSdkVersion="21"
-        android:minSdkVersion="21"/>
+
+
+    <uses-sdk
+        android:maxSdkVersion="21"
+        android:minSdkVersion="21"
+        android:targetSdkVersion="21" />
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -39,23 +46,32 @@
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".DonationActivity"
-            android:label="@string/donation"/>
-        <activity android:name=".ImprintActivity"
-            android:label="@string/imprint"/>
-        <activity android:name=".FavoritActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".DonationActivity"
+            android:label="@string/donation" />
+        <activity
+            android:name=".ImprintActivity"
+            android:label="@string/imprint" />
+        <activity
+            android:name=".FavoritActivity"
             android:label="@string/favorite" />
-        <activity android:name=".TeamActivity"
-            android:label="@string/all_teams"/>
-        <activity android:name=".AllGamesActivity"
-            android:label="@string/all_games"/>
-        <activity android:name=".SingleGameActivity"/><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <activity
+            android:name=".TeamActivity"
+            android:label="@string/all_teams" />
+        <activity
+            android:name=".AllGamesActivity"
+            android:label="@string/all_games" />
+        <activity android:name=".SingleGameActivity" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".logoutActivity"></activity>
     </application>
 
 </manifest>

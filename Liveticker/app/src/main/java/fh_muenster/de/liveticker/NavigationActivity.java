@@ -20,8 +20,23 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * @author Andreas Blass , Kevin Gorter
+ * @version 1.0
+ */
+
+/**
+ * Erstellen einer Methode NavigationActivity
+ */
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    /**
+     *
+     * @author Andreas Blass, Kevin Gorter
+     * @param savedInstanceState
+     *  Aufruf der activity_navigation
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +52,10 @@ public class NavigationActivity extends AppCompatActivity
         Intent user_infos = getIntent();
         String user_name = user_infos.getStringExtra("User");
 
+        /**
+        *Überprüfung ob ein User vorhanden ist
+        * Ist ein User vorhanden dann wird er als User angezeigt und bekommt ein Willkommenstext
+         */
         if(user_name!=null && !user_name.equals(""))
         {
             TextView txt = (TextView)findViewById(R.id.wilkommens_seite);
@@ -44,7 +63,10 @@ public class NavigationActivity extends AppCompatActivity
         }
 
 
-
+        /**
+         * DrawerLayout drawer wird erstellt
+         * Es ist möglich ihn zu öffnen und zu schließen
+         */
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -67,19 +89,23 @@ public class NavigationActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        /**
+         * Einfügung in das Menü , Elemente werden dort eingefügt in die Aktionsleiste wenn diese vorhanden ist
+         */
         getMenuInflater().inflate(R.menu.navigation, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        /**
+         * Action bar ist verfügbar
+         * die Action bar aktuallisiert sich automatisch per Button
+         * solange die spezifizíerten parent activitys in der AndroidManifest.xml vorhanden sind
+         */
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
             Intent myIntent = new Intent(NavigationActivity.this,AllGamesActivity.class);
             startActivity(myIntent);
@@ -89,10 +115,13 @@ public class NavigationActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+    * Methode die die Navigation händelt zwischen den Activitys
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_alle_spiele) {

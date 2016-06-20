@@ -42,37 +42,48 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
+
 /**
- * A login screen that offers login via email/password.
+ * @author Andreas Blass , Kevin Gorter
+ * @version 1.0
+ */
+
+/**
+ * Eine Loginactivity die dem User eine Anmeldung per Benutzername und Passwort anbietet
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+
     /**
-     * Id to identity READ_CONTACTS permission request.
+    Eine Id wird angelegt um die Identität der READ_CONTACTS erlaubnis anzufragen
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
+    /*
      * TODO: remove after connecting to a real authentication system.
+     */
+
+    /**
+    Ein Dummy wird authentifiziert  und hat enthält in seinem Bereich das Wissen über Passwort und Benutzer
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
     };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
+
+    /*
+    Verfolgt die Login-Aufgabe , um sicherzustellen das storniert werden kann, falls es gewünscht wird
      */
+
     private UserLoginTask mAuthTask = null;
 
-    // UI references.
+    /**
+    UI Referenzen
+     */
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
     private GoogleApiClient client;
 
     @Override
@@ -81,12 +92,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
 
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+
+        /**
+        * Auto- Implementierung der App Index API
+         */
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
 
     }
+
+    /**
+     * On button click.
+     *
+     * @param v Entgegennahme der Eingabe in dem EditTextfeld "uname" und "pw" Eingaben werden überprüft Uname und pw werden in einen String [] gesteckt Aufruf einer Intent i
+     */
+
 
     public void onButtonClick(View v) {
         if (v.getId() == R.id.btnLogin) {
@@ -119,11 +139,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         getLoaderManager().initLoader(0, null, this);
     }
-
+    /**
+    Überprüfung der SDK Version
+     */
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
+        /**
+        Überprüfung der READ_CONTACTS Erlaubnis
+         */
         if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
@@ -142,8 +167,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
+
     /**
-     * Callback received when a permissions request has been completed.
+     Man soll einen Rückruf erhalten , wenn eine Anforderung abgeschlossen wurde
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -157,20 +183,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
+    *Versuche dich einzuloggen oder zu registrieren in der spezifizierten login form
+    *Wenn Fehler bei der Eingabe vorhanden sind dann gebe Fehlermeldungen aus
+    * Zum Beispiel gebe aus "Das Passwort ist zu kurz" oder "Die E-Mail Adresse ist ungültig"
+    * Die Fehlermeldungen werden angezeigt und der Login ist fehlgeschlagen
      */
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
 
-        // Reset errors.
+        /**
+        Zurücksetzen der Fehler
+         */
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
-        // Store values at the time of the login attempt.
+
+        /**
+        Speicherung der Werte zum Zeitpunkt der Anmeldung
+         */
+
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
@@ -184,48 +217,71 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid email address.
+
+        /**
+        Überprüfe ob eine  gültige E-Mail eingetragen wurde
+         */
+
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        }
+        /**
+        Überprüfe ob es sich um eine gültige E-Mail Adrese handelt
+         */
+        else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+            /**
+            * Es ist ein fehler aufgetreten und führe den Login nicht durch
+             */
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+
+
+            /**
+            Zeige den Prozess Fortschritt an  und füge im Hintergrund einen Task aus und
+            führe den user login versuch aus
+             */
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
     }
 
+    /**
+    *@param email
+    *Überprüfe ob ein "@" in der Eingabe ist
+     */
+
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
+    /**
+   *@param password
+   *Überprüfe ob die Passwort länge >4 ist
+    */
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
+
     /**
-     * Shows the progress UI and hides the login form.
+     * Honeycomb MR2 erlaubt Animation
+     * Wenn es möglich ist ,dann nutze API's to fade-in den Progress spinner
+     * @param show
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
@@ -247,8 +303,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             });
         } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
+
+            /*
+            *Die ViewPropertyAnimator APIs sind nicht erlaubt , also zeige diese an
+            * und verstecke die relevanten UI Komponenten
+             */
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
@@ -257,20 +316,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
+
+                /**
+                 * Abruf von Datenzeilen für das "Profil" Kontakt des Gerätebenutzer
+                 */
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
                         ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
 
-                // Select only email addresses.
+
+
+                /**
+                 * wähle nur E-Mail adressen aus
+                 */
                 ContactsContract.Contacts.Data.MIMETYPE +
                         " = ?", new String[]{ContactsContract.CommonDataKinds.Email
                 .CONTENT_ITEM_TYPE},
 
+                /**
+                 * Zeige vorzüglich email adressen an. Merke dass es nicht primär e-mail adressen sein müssen
+                 * wenn keine angegeben worden sind
+                 */
                 // Show primary email addresses first. Note that there won't be
                 // a primary email address if the user hasn't specified one.
                 ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
     }
 
+    /**
+     * Erzeuge ein Array für E-Mails
+     * Solange es E-Mail adressen gibt die noch nicht in dem Array stehen füge sie hinzu
+     * @param cursorLoader
+     * @param cursor
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         List<String> emails = new ArrayList<>();
@@ -288,8 +364,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+    /**
+     * Erstellt einen Adapter der angibt was AutoCompleteTextView in seiner Liste enthält
+     * @param emailAddressCollection
+     */
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
+
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
@@ -301,15 +381,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onStart() {
         super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        /**
+         * Auto-generated das implementiert die App Index API
+         */
         client.connect();
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Login Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
+
+
+                /**
+                 * Gehe sicher das die WEB page URL is correct
+                 * Ansonsten setze die URL auf null
+                 */
                 Uri.parse("http://host/path"),
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://fh_muenster.de.liveticker/http/host/path")
@@ -321,14 +406,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onStop() {
         super.onStop();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        /**
+         * Auto-Generated um die APP Index des APIs zu imolementiert
+         */
+
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Login Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
+
+                /**
+                 * Gehe sicher das die WEB page URL is correct
+                 * Ansonsten setze die URL auf null
+                 */
+
                 Uri.parse("http://host/path"),
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://fh_muenster.de.liveticker/http/host/path")
@@ -339,12 +430,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
     private interface ProfileQuery {
+        /**
+         * The Projection.
+         */
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
                 ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
         };
 
+        /**
+         * The constant ADDRESS.
+         */
         int ADDRESS = 0;
+        /**
+         * The constant IS_PRIMARY.
+         */
         int IS_PRIMARY = 1;
     }
 
@@ -352,11 +452,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+    /**
+     * Präsentiert ein asynchrones login/registrierung task um die authentifizierung des Users zu gewähren
+     */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
 
+        /**
+         * Instantiates a new User login task.
+         *
+         * @param email    the email
+         * @param password the password
+         */
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
@@ -367,7 +476,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
+                /**
+                 * Simuliert die Netzwerk Verbindung
+                 */
+
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
@@ -376,7 +488,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
+
+                    /**
+                     * Return "true" wenn ein Account existiert und das passwort übereinstimmt
+                     */
+
                     return pieces[1].equals(mPassword);
                 }
             }

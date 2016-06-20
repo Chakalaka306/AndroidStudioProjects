@@ -34,6 +34,12 @@
                 android:icon="@drawable/donation"
                 android:title="Spende" />
             #icon Credit goes to "Freepik" on "Flaticon"
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/exit"
+                android:title="Logout" />
+            #icon Credit goes to "Freepik" on "Flaticon"
         </menu>
     </item>
 
